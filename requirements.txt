@@ -1,0 +1,55 @@
+# Core async libraries
+aiofiles==23.1.0
+aiohttp
+asyncpg==0.28.0
+
+# HTTP clients
+httpx==0.25.0
+requests==2.32.3
+curl_cffi
+pycurl
+
+# Web3/Crypto
+web3==6.11.3
+eth-account==0.11.3
+eth-hash==0.7.1
+eth-keyfile==0.9.1
+eth-keys==0.6.1
+eth-rlp==1.0.1
+eth-typing==5.1.0
+eth-utils==5.2.0
+eth_abi==5.2.0
+ecdsa==0.19.0
+py-ecc==7.0.1
+pycryptodome==3.21.0
+hexbytes==0.3.1
+rlp==4.1.0
+bitarray==3.0.0
+cytoolz==1.0.1
+toolz==1.0.0
+pyunormalize==16.0.0
+
+# Email handling
+aioimaplib==1.0.1
+beautifulsoup4==4.12.3
+
+# Captcha solving
+2captcha-python==1.5.1
+
+# Configuration and logging
+PyYAML==6.0.1
+loguru==0.7.0
+python-dotenv==1.0.0
+
+# Database
+SQLAlchemy==2.0.30
+
+# UI/Terminal
+rich
+windows-curses; platform_system=="Windows"
+
+# Proxy support
+python-socks==2.4.3
+
+# Utilities
+fake-useragent==1.4.0

@@ -1,0 +1,51 @@
+database:
+  host: 0.0.0.0
+  port: 5432
+  name: teneo
+  user: postgres
+  password: 123234345
+
+captcha:
+  solver: "2captcha"  # Possible values: "2captcha", "capsolver"
+  api_key: "paste_your_api_key_here"  # Universal API key for selected solver
+
+registration:
+  threads: 1
+  delay_min: 1
+  delay_max: 5
+  
+farming:
+  threads: 5       # number of concurrent accounts to launch
+  delay_min: 10       # minimum delay between launching accounts (seconds)
+  delay_max: 15       # maximum delay between launching accounts (seconds)
+  passive_data_enabled: false  # enable/disable passive data collection and sending
+  ping_interval: 10           # ping interval in seconds
+  initial_delay: 1            # delay after connection establishment
+
+email:
+  mode: "multi_imap"  # Possible values: "single_imap", "multi_imap", "forwarding"
+  
+  single_imap:
+    host: "mail.adm.tools"
+    
+  multi_imap:
+    gmail: "imap.gmail.com"
+    outlook: "outlook.office365.com"
+    yahoo: "imap.mail.yahoo.com"
+      
+  forwarding:
+    host: "imap.gmail.com"
+    username: "your_email@gmail.com"
+    password: "your_email_password"
+
+logging:
+  level: INFO
+  retention_days: 7
+  path: ./logs
+  debug: false  # Enable detailed debug information
+
+paths:
+  proxies: ./data/proxies.txt
+  wallets: ./data/private_keys.txt
+  accounts: ./data/accounts.txt
+  registrations: ./data/registrations.txt 
