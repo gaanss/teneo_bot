@@ -13,6 +13,9 @@ registration:
   threads: 1
   delay_min: 1
   delay_max: 5
+
+authorization:
+  force_authorize_existing: true  # process existing accounts from authorizations.txt (skip DB check)
   
 farming:
   threads: 5       # number of concurrent accounts to launch
@@ -21,7 +24,6 @@ farming:
   passive_data_enabled: false  # enable/disable passive data collection and sending
   ping_interval: 10           # ping interval in seconds
   initial_delay: 1            # delay after connection establishment
-  force_authorize_existing: true  # skip DB token check and force re-authorize existing accounts
 
 email:
   mode: "multi_imap"  # Possible values: "single_imap", "multi_imap", "forwarding"
