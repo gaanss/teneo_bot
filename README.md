@@ -2,15 +2,6 @@
 
 **Automated Teneo Protocol farming bot with advanced features**
 
-<p align="center">
-  <a href="https://t.me/gans_software">
-    <img src="https://img.shields.io/badge/Telegram-Channel-blue?style=for-the-badge&logo=telegram" alt="Telegram Channel">
-  </a>
-  <a href="https://t.me/ganssoftwarechat">
-    <img src="https://img.shields.io/badge/Telegram-Chat-blue?style=for-the-badge&logo=telegram" alt="Telegram Chat">
-  </a>
-</p>
-
 > **Note:** This is paid software. 
 > To purchase, contact via Telegram: [@gaansss](https://t.me/gaansss)
 
@@ -21,15 +12,15 @@ A Python-based automation tool for Teneo Protocol that mimics browser extension 
 ## Features ✨
 
 - 🔄 **Automated Farming** - Continuous point collection with WebSocket connections
-- ⏰ **Smart Timing** - Internal 15-minute heartbeat timer matching browser behavior  
-- 🔐 **Secure Authentication** - Captcha solving and token management
 - 🌐 **Proxy Support** - 1:1 proxy-to-account distribution for scalability
 - 📊 **Database Integration** - PostgreSQL for account and statistics tracking
-- 🛡️ **Code Protection** - PyArmor obfuscation for security
 - 🚀 **Multi-threading** - Concurrent farming across multiple accounts
 - 📱 **Cross-platform** - Windows and Linux executable builds
 - 👤 **Account Registration** - Automated registration with referral code support
 - 💼 **Wallet Integration** - ETH wallet linking to accounts
+- 🎁 **Silver NFT & Whitelist** - Automated Silver NFT claiming and whitelist registration
+- ✅ **Task Automation** - Automatic completion of available tasks and challenges
+- 🔄 **Re-verification System** - Automatic retry for unverified accounts
 - 📝 **Comprehensive Logging** - Detailed logging system with rotation
 
 ## Technical Stack 💻
@@ -37,19 +28,9 @@ A Python-based automation tool for Teneo Protocol that mimics browser extension 
 - **Language**: Python 3.11+
 - **WebSocket**: Real-time farming connections  
 - **Database**: PostgreSQL with asyncpg
-- **Security**: PyArmor obfuscation, proxy rotation
 - **Build**: PyInstaller for single-file executables
 - **Platforms**: Windows and Linux
 
-## Architecture 🏗️
-
-Modular design with separate components for:
-- **Farming Module** - WebSocket connections with browser-like behavior
-- **Authentication** - Secure login and token management
-- **Proxy Handler** - Intelligent proxy rotation and management
-- **Captcha Solver** - Automated captcha solving (2captcha/capsolver)
-- **Wallet Manager** - ETH wallet integration and management
-- **Database** - Account statistics and data persistence
 
 ## Installation 🔧
 
@@ -85,6 +66,10 @@ farming:
   ping_interval: 10       # WebSocket ping interval (seconds)
   initial_delay: 1        # initial delay after connection (seconds)
   passive_data_enabled: false # enable passive data collection
+  x_data:
+    enabled: false        # enable X (Twitter) data collection
+    account_id: ""        # your X account ID
+    username: ""          # your X username
 
 email:
   mode: "single_imap"     # single_imap | multi_imap | forwarding
@@ -149,9 +134,14 @@ paths:
    email:password
    ```
 
-8. `data/private_keys.txt` - list of Ethereum private keys:
+8. `data/private_keys.txt` - list of Ethereum private keys for wallet connect:
    ```
    private_key
+   ```
+
+9. `data/claim_silver.txt` - list of accounts for Silver NFT claiming:
+   ```
+   private keys
    ```
 
 ## License System 🔑
@@ -187,23 +177,33 @@ If you don't have a license key, please contact the developer.
 ## Main Operations 📝
 
 - **Register new accounts** – load from `data/registrations.txt`, register on Teneo, and save tokens to database.
+- **Authorization** – load from `data/authorizations.txt`, authenticate accounts and update access tokens.
 - **Re-verify unverified accounts** – retry email verification for failed registrations listed in `results/unverified.txt`.
 - **Start farming** – load from `data/farming.txt` and perform WebSocket farming sessions with internal heartbeat timer.
-- **Check and claim tasks** – load from `data/task.txt` and process tasks for each account.
+- **Tasks** – load from `data/task.txt` and automatically complete available tasks for each account.
 - **Link wallets** – load from `data/wallet_connect.txt` and link ETH wallets to accounts.
-- **Update account data** – load from `data/authorizations.txt`, authenticate accounts, and update their stats.
+- **Claim Silver NFT** – load from `data/claim_silver.txt` and automatically claim Silver NFT and register for whitelist.
 - **Export account statistics** – export all account data and stats to a CSV file in `results/`.
 
-## Farming Behavior 🎯
 
-The bot precisely mimics browser extension behavior:
+## Silver NFT & Whitelist 🎁
 
-1. **Connection Setup** - Establishes WebSocket connection with proper headers and authentication
-2. **Initial Requests** - Sends config version and getMyPoints requests upon connection
-3. **Heartbeat Timer** - Internal 15-minute timer sends getMyPoints → heartbeatComplete sequence
-4. **Server Response** - Handles server pulses and updates account statistics
-5. **Ping System** - Regular ping messages to maintain connection health
-6. **Reconnection Logic** - Smart reconnection with exponential backoff on failures
+The bot automates the Silver NFT claiming process:
+
+1. **Eligibility Check** - Automatically checks if account is eligible for Silver NFT
+2. **Balance Verification** - Verifies sufficient points balance (minimum required)
+3. **Automated Claiming** - Sends claim request and processes response
+4. **Whitelist Registration** - Automatically registers eligible accounts for whitelist
+5. **Result Tracking** - Saves results to `results/successful_mint.txt`, `results/insufficient_balance.txt`, etc.
+
+### Silver NFT Results
+
+Results are saved to different files based on the outcome:
+- `results/successful_mint.txt` - Successfully claimed NFTs
+- `results/insufficient_balance.txt` - Accounts with insufficient points
+- `results/already_have_silver.txt` - Accounts that already have Silver NFT
+- `results/has_tgold.txt` - Accounts that have TGold (not eligible)
+- `results/already_exists.txt` - Duplicate claim attempts
 
 ### Email Requirements ⚠️
 
@@ -269,4 +269,10 @@ Neon provides a generous free tier with:
 
 ## Support 📞
 
-For support, please contact the developer via Telegram: [@gaansss](https://t.me/gaansss) 
+For support, please contact the developer via Telegram: [@gaansss](https://t.me/gaansss)
+
+---
+
+**Last Updated**: October 2025
+
+**By using this software, you acknowledge that you have read and agree to these Terms of Service and Privacy Policy.** 
