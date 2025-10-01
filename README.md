@@ -1,13 +1,9 @@
 # Teneo Farm Bot 🚀
 
-**Automated Teneo Protocol farming bot with advanced features**
-
 > **Note:** This is paid software. 
 > To purchase, contact via Telegram: [@gaansss](https://t.me/gaansss)
 
 A Python-based automation tool for Teneo Protocol that mimics browser extension behavior to maximize point earning efficiency. Professional-grade farming bot with advanced security and scalability features.
-
-![Interface](interface.png)
 
 ## Features ✨
 
