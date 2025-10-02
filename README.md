@@ -62,10 +62,7 @@ farming:
   ping_interval: 10       # WebSocket ping interval (seconds)
   initial_delay: 1        # initial delay after connection (seconds)
   passive_data_enabled: false # enable passive data collection
-  x_data:
-    enabled: false        # enable X (Twitter) data collection
-    account_id: ""        # your X account ID
-    username: ""          # your X username
+
 
 email:
   mode: "single_imap"     # single_imap | multi_imap | forwarding
